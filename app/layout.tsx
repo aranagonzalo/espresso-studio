@@ -1,39 +1,44 @@
+import type { Metadata } from "next";
 import "./globals.css";
+
+import { fontVariables } from "./fonts";
+
+export const metadata: Metadata = {
+    title: {
+        default: "Premium Coffee | Máquinas de Espresso de Lujo",
+        template: "%s | Premium Coffee",
+    },
+    description:
+        "Descubre nuestra selección exclusiva de máquinas de espresso premium y grinders de alta gama. Productos luxury para verdaderos amantes del café.",
+    keywords: [
+        "máquinas de café",
+        "espresso premium",
+        "rocket espresso",
+        "grinders",
+        "café de especialidad",
+        "lima",
+        "perú",
+    ],
+    authors: [{ name: "Premium Coffee" }],
+    openGraph: {
+        type: "website",
+        locale: "es_PE",
+        url: "https://premiumcoffee.pe",
+        siteName: "Premium Coffee",
+        title: "Premium Coffee | Máquinas de Espresso de Lujo",
+        description:
+            "Máquinas de espresso y grinders premium para verdaderos amantes del café.",
+    },
+};
 
 export default function RootLayout({
     children,
-}: {
+}: Readonly<{
     children: React.ReactNode;
-}) {
+}>) {
     return (
-        <html lang="en">
-            <body>
-                <header className="border-b border-white/10 bg-background">
-                    <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                        <span className="font-semibold tracking-wide">
-                            Espresso Studio
-                        </span>
-                        <div className="flex gap-6 text-sm text-neutral-400">
-                            <a href="/machines" className="hover:text-gold">
-                                Machines
-                            </a>
-                            <a href="/grinders" className="hover:text-gold">
-                                Grinders
-                            </a>
-                            <a href="/contact" className="hover:text-gold">
-                                Contact
-                            </a>
-                        </div>
-                    </nav>
-                </header>
-
-                {children}
-                <footer className="border-t border-white/10 mt-24">
-                    <div className="max-w-7xl mx-auto px-6 py-10 text-sm text-neutral-400">
-                        © Espresso Studio
-                    </div>
-                </footer>
-            </body>
+        <html lang="es" className={fontVariables}>
+            <body className="antialiased">{children}</body>
         </html>
     );
 }

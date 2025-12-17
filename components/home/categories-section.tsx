@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ArrowRight, Package } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { categories } from "@/lib/data/categories";
 
-const containerVariants = {
+const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -18,15 +18,11 @@ const containerVariants = {
     },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: {
-            duration: 0.6,
-            ease: "easeOut",
-        },
     },
 };
 
@@ -66,7 +62,11 @@ export default function CategoriesSection() {
                     className="grid md:grid-cols-2 gap-8 lg:gap-12"
                 >
                     {categories.map((category) => (
-                        <motion.div key={category.id} variants={itemVariants}>
+                        <motion.div
+                            key={category.id}
+                            variants={itemVariants}
+                            transition={{ duration: 0.6 }}
+                        >
                             <Link href={category.href} className="group block">
                                 <div className="relative overflow-hidden rounded-2xl bg-neutral-50 hover:shadow-premium transition-all duration-500">
                                     {/* Image Container */}
